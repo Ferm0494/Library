@@ -1,4 +1,4 @@
-let myLibrary = [];
+let myLibrary;
 let showForm = document.getElementsByTagName('button')[0];
 showForm.addEventListener('click', showAddForm)
 
@@ -10,15 +10,24 @@ function Book(title, author, pages, status) {
 }
 
 function addBookToLibrary() {
-    let title = document.getElementsByName('ftitle')[0];
-    let author = document.getElementsByName('fauthor')[0];
-    let pages = document.getElementsByName('fpages')[0];
-    let status = document.getElementsByName('status')[0];
+    let title = document.getElementById('ftitle')[0];
+    let author = document.getElementById('fauthor').value;
+    let pages = document.getElementById('fpages').value;
+    let status = document.getElementById('status');
+    console.log(`This is the text ${status}`)
     let book = new Book(title, author, pages, status);
     myLibrary.push(book)
+    localStorage.setItem("myLibrary", myLibrary)
+
+
 }
 
 function render() {
+    localStorage.clear()
+    myLibrary = localStorage.getItem("myLibrary")
+    if (myLibrary === null) {
+        myLibrary = []
+    }
     let container = document.getElementById("Container")
     for (let i = 0; i < myLibrary.length; i++) {
         var div = document.createElement('div');
@@ -26,7 +35,7 @@ function render() {
         div.innerHTML = 'Title: ' + myLibrary[i].title;
         container.appendChild(div);
     }
-    console.log(myLibrary);
+
 }
 
 function showAddForm() {
