@@ -1,3 +1,7 @@
 #Container {
-  border: 1px solid red;
+    border: 1px solid red;
+}
+
+.my-flex {
+    display: flex
 }
