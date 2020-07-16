@@ -3,5 +3,7 @@
 }
 
 .my-flex {
-    display: flex
+    display: flex;
+    width: 50vw;
+    margin: auto;
 }

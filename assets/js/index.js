@@ -1,6 +1,6 @@
 let myLibrary = [];
-let addButton = document.getElementsByTagName('button')[0];
-addButton.addEventListener('click', showAddForm)
+let showForm = document.getElementsByTagName('button')[0];
+showForm.addEventListener('click', showAddForm)
 
 function Book(title, author, pages, status) {
     this.title = title,
@@ -9,8 +9,12 @@ function Book(title, author, pages, status) {
         this.status = status
 }
 
-function addBookToLibrary(book) {
-    // alert("Cliked!")
+function addBookToLibrary() {
+    let title = document.getElementsByName('ftitle')[0];
+    let author = document.getElementsByName('fauthor')[0];
+    let pages = document.getElementsByName('fpages')[0];
+    let status = document.getElementsByName('status')[0];
+    let book = new Book(title, author, pages, status);
     myLibrary.push(book)
 }
 
@@ -22,13 +26,19 @@ function render() {
         div.innerHTML = 'Title: ' + myLibrary[i].title;
         container.appendChild(div);
     }
+    console.log(myLibrary);
 }
 
 function showAddForm() {
-    alert('Hello world!')
+    const form = document.getElementsByTagName('form')[0];
+    form.classList.remove('d-none');
+    let buttonCreate = document.getElementsByName('createBook')[0];
+    buttonCreate.addEventListener('click', addBookToLibrary)
 
+    //form.style.position = 'relative;';
+    //document.body.style.opacity = 0.5;
 }
 // Meta-data init
-addBookToLibrary(new Book('Crime and punishment', 'Fyodor Dostoyevsky', 500, true));
-addBookToLibrary(new Book('Title2', 'Author2', 200, false));
+//addBookToLibrary(new Book('Crime and punishment', 'Fyodor Dostoyevsky', 500, true));
+//addBookToLibrary(new Book('1984', 'George Orwell', 450, false));
 render();
