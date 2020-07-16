@@ -1,38 +1,40 @@
-let myLibrary;
+let myLibrary = [];
 let showForm = document.getElementsByTagName('button')[0];
 showForm.addEventListener('click', showAddForm)
 
 function Book(title, author, pages, status) {
     this.title = title,
-        this.author = author,
-        this.pages = pages,
-        this.status = status
+    this.author = author,
+    this.pages = pages,
+    this.status = status
 }
 
 function addBookToLibrary() {
-    let title = document.getElementById('ftitle')[0];
+    let title = document.getElementById('ftitle').value;
     let author = document.getElementById('fauthor').value;
     let pages = document.getElementById('fpages').value;
-    let status = document.getElementById('status');
-    console.log(`This is the text ${status}`)
+    let status = document.getElementById('status').checked;
     let book = new Book(title, author, pages, status);
     myLibrary.push(book)
-    localStorage.setItem("myLibrary", myLibrary)
-
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 
 }
 
 function render() {
-    localStorage.clear()
-    myLibrary = localStorage.getItem("myLibrary")
+    //localStorage.clear();
+    myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
     if (myLibrary === null) {
         myLibrary = []
     }
-    let container = document.getElementById("Container")
+    let container = document.getElementsByClassName("row")[0];
     for (let i = 0; i < myLibrary.length; i++) {
         var div = document.createElement('div');
-        div.id = myLibrary[i].title;
-        div.innerHTML = 'Title: ' + myLibrary[i].title;
+        div.classList.add('my-flex','flex-column','bg-light', 'rounded', 'p-3', 'm-2', 'border', 'border-primary','col-3' );
+        div.innerHTML = 'Title: ' + myLibrary[i].title +'<br>Author: ' + myLibrary[i].author +'<br>Pages: ' + myLibrary[i].pages;
+        var btnStatus = document.createElement('button');
+        btnStatus.innerHTML= 'Switch';
+        btnStatus.classList.add('btn', 'btn-primary', 'py-2', 'w-75');
+        div.appendChild(btnStatus);
         container.appendChild(div);
     }
 

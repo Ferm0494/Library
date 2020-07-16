@@ -1,9 +1,12 @@
 #Container {
-    border: 1px solid red;
 }
 
 .my-flex {
     display: flex;
-    width: 50vw;
-    margin: auto;
+
+}
+
+.add-form {
+  width: 50vw;
+  margin: auto;
 }
