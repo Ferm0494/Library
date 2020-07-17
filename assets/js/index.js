@@ -17,8 +17,8 @@ function Book(title, author, pages, status) {
   this.pages = pages;
   this.status = status;
 }
-
-Book.prototype.fillClass = (res, btnStatus) => {
+/* eslint-disable func-names */
+Book.prototype.fillClass = function (res, btnStatus) {
   if (res) {
     btnStatus.innerHTML = 'Already read';
     btnStatus.className = '';
@@ -30,7 +30,7 @@ Book.prototype.fillClass = (res, btnStatus) => {
   }
 };
 
-Book.prototype.changeStatus = (button, res) => {
+Book.prototype.changeStatus = function (button, res) {
   this.fillClass(res, button);
   this.status = String(res);
   if (res) {
@@ -43,6 +43,7 @@ Book.prototype.changeStatus = (button, res) => {
     });
   }
 };
+/* eslint-enable func-names */
 
 const addBookToLibrary = () => {
   const childrenForm = form.children;
