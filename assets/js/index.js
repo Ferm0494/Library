@@ -1,6 +1,6 @@
-import {
-  hideOutputs,
-} from './render.js';
+import
+hideOutputs
+  from './render.js';
 
 import {
   myLibrary,
@@ -37,27 +37,30 @@ const removeBook = (id, node) => {
   localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 };
 
-const fillClass = (id, res, btnStatus) => {
+const fillClass = (res, btnStatus) => {
   if (res) {
     btnStatus.innerHTML = 'Already read';
     btnStatus.className = '';
     btnStatus.classList.add('btn', 'btn-success', 'py-2', 'w-75');
-    btnStatus.addEventListener('click', () => {
-      changeStatus(id, btnStatus, false);
-    });
   } else {
     btnStatus.innerHTML = 'Not read';
     btnStatus.className = '';
     btnStatus.classList.add('btn', 'btn-danger', 'py-2', 'w-75');
-    btnStatus.addEventListener('click', () => {
-      changeStatus(id, btnStatus, true);
-    });
   }
 };
 
 const changeStatus = (id, button, res) => {
-  fillClass(id, res, button);
+  fillClass(res, button);
   myLibrary[id].status = String(res);
+  if (res) {
+    button.addEventListener('click', () => {
+      changeStatus(id, button, false);
+    });
+  } else {
+    button.addEventListener('click', () => {
+      changeStatus(id, button, true);
+    });
+  }
 };
 
 
@@ -86,9 +89,9 @@ const render = () => {
 
     const btnStatus = nodeChildrens[3];
     if (myLibrary[i].status === 'true') {
-      fillClass(i, true, btnStatus);
+      changeStatus(i, btnStatus, true);
     } else {
-      fillClass(i, false, btnStatus);
+      changeStatus(i, btnStatus, false);
     }
     row.appendChild(node);
   }
