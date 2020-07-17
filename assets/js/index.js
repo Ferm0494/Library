@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import
 hideOutputs
   from './render.js';
@@ -8,7 +9,7 @@ import {
   row,
   form,
 } from './globals.js';
-
+/* eslint-enable import/extensions */
 
 function Book(title, author, pages, status) {
   this.title = title;
@@ -17,7 +18,7 @@ function Book(title, author, pages, status) {
   this.status = status;
 }
 
-Book.prototype.fillClass = function (res, btnStatus) {
+Book.prototype.fillClass = (res, btnStatus) => {
   if (res) {
     btnStatus.innerHTML = 'Already read';
     btnStatus.className = '';
@@ -29,7 +30,7 @@ Book.prototype.fillClass = function (res, btnStatus) {
   }
 };
 
-Book.prototype.changeStatus = function (button, res) {
+Book.prototype.changeStatus = (button, res) => {
   this.fillClass(res, button);
   this.status = String(res);
   if (res) {
@@ -63,33 +64,6 @@ const removeBook = (id, node) => {
   localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 };
 
-/* const fillClass = (res, btnStatus) => {
-  if (res) {
-    btnStatus.innerHTML = 'Already read';
-    btnStatus.className = '';
-    btnStatus.classList.add('btn', 'btn-success', 'py-2', 'w-75');
-  } else {
-    btnStatus.innerHTML = 'Not read';
-    btnStatus.className = '';
-    btnStatus.classList.add('btn', 'btn-danger', 'py-2', 'w-75');
-  }
-}; */
-
-/* const changeStatus = (id, button, res) => {
-  fillClass(res, button);
-  myLibrary[id].status = String(res);
-  if (res) {
-    button.addEventListener('click', () => {
-      changeStatus(id, button, false);
-    });
-  } else {
-    button.addEventListener('click', () => {
-      changeStatus(id, button, true);
-    });
-  }
-}; */
-
-
 const render = () => {
   if (myLibrary === null) {
     myLibrary = [];
@@ -103,7 +77,12 @@ const render = () => {
     node.setAttribute('data-attribute', i);
     const nodeChildrens = node.children;
 
-    const book = new Book(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].status);
+    const book = new Book(
+      myLibrary[i].title,
+      myLibrary[i].author,
+      myLibrary[i].pages,
+      myLibrary[i].status,
+    );
 
 
     nodeChildrens[0].innerHTML = `Title: ${book.title}`;
