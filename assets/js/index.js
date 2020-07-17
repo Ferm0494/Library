@@ -67,8 +67,6 @@ const removeBook = (id, node) => {
 
 const render = () => {
   const div = document.getElementsByClassName('book');
-
-
   for (let i = 0; i < myLibrary.length; i += 1) {
     const node = div[0].cloneNode(true);
     node.classList.remove('d-none');
