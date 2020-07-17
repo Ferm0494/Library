@@ -2,9 +2,7 @@
 A library application with front only developed with javascript
 
 
-## Screenshots
-![homepage](https://user-images.githubusercontent.com/53324035/84939513-10ba6e80-b0a4-11ea-9580-60b53c1cf8c9.png)
-![categories-page](https://user-images.githubusercontent.com/53324035/84939582-2af44c80-b0a4-11ea-8d27-6c8609c21433.png)
+
 
 ## Built with
 
@@ -29,12 +27,6 @@ To get a local copy up and running follow these simple example steps:
 5. Open your web browser and the index.html local file that was copied to the proyect folder
 
 ## See a live demo [Here](https://google.com/)
-
-## Potential future features
-
- * Upload custom images for the articles
- * Omniauth authentication with Github, Google and Facebook
- * Ajax updating for voting notification
 
 ## Show your support
 Give a ⭐️ if you like this project!
