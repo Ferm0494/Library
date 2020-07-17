@@ -1,7 +1,7 @@
 # Library
 A library application with front only developed with javascript
 
-
+This project consists of a library app that lets you keep track of your read books by adding the main info, like title, author, the number of pages and wether has been read yet or not. Each book will appear in a card and is possible to add new books filling the entering form that appears by clicking in the button with the plus (+) symbol.
 
 
 ## Built with
