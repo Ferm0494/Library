@@ -31,10 +31,14 @@ const addBookToLibrary = () => {
 
 }
 
-const removeBook = (id) => {
-    myLibrary.splice(id,1);
+const removeBook = (id, node) => {
+
+    node.remove()
+    myLibrary.splice(id, 1);
+    console.log(myLibrary)
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
-    render();
+
+    // render();
 }
 
 const render = () => {
@@ -47,10 +51,11 @@ const render = () => {
 
     console.log(myLibrary);
 
-    let div = document.getElementsByClassName("book")[0]
+    let div = document.getElementsByClassName("book")
+
 
     for (let i = 0; i < myLibrary.length; i++) {
-        let node = div.cloneNode(true);
+        let node = div[0].cloneNode(true);
         node.classList.remove('d-none');
         node.setAttribute('data-attribute', i);
         let nodeChildrens = node.children;
@@ -60,7 +65,9 @@ const render = () => {
         nodeChildrens[1].innerHTML = `Author: ${myLibrary[i].author}`
         nodeChildrens[2].innerHTML = myLibrary[i].pages + ' pages'
 
-        nodeChildrens[4].addEventListener("click",function(){removeBook(i);} )
+        nodeChildrens[4].addEventListener("click", function() {
+            removeBook(i, node);
+        })
 
 
 
