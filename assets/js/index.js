@@ -1,11 +1,15 @@
 import {
-    hideOutputs
+    hideOutputs,
 } from './render.js'
 
-let myLibrary = [];
-const showForm = document.getElementsByTagName('button')[1];
-const row = document.getElementsByClassName('row')[0]
-const form = document.getElementsByTagName('form')[0]
+import {
+    myLibrary,
+    showForm,
+    row,
+    form,
+} from './globals.js'
+
+
 
 
 function Book(title, author, pages, status) {
@@ -39,9 +43,6 @@ const removeBook = (id, node) => {
 }
 
 const render = () => {
-
-    // localStorage.clear();
-    myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
     if (myLibrary === null) {
         myLibrary = []
     }
@@ -89,7 +90,6 @@ const changeStatus = (id, button, res) => {
 const fillClass = (id, res, btnStatus) => {
 
     if (res) {
-        btnStatus.remove
         btnStatus.innerHTML = 'Already read';
         btnStatus.className = ""
         btnStatus.classList.add('btn', 'btn-success', 'py-2', 'w-75');
