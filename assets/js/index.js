@@ -17,6 +17,32 @@ function Book(title, author, pages, status) {
   this.status = status;
 }
 
+Book.prototype.fillClass = function (res, btnStatus) {
+  if (res) {
+    btnStatus.innerHTML = 'Already read';
+    btnStatus.className = '';
+    btnStatus.classList.add('btn', 'btn-success', 'py-2', 'w-75');
+  } else {
+    btnStatus.innerHTML = 'Not read';
+    btnStatus.className = '';
+    btnStatus.classList.add('btn', 'btn-danger', 'py-2', 'w-75');
+  }
+};
+
+Book.prototype.changeStatus = function (button, res) {
+  this.fillClass(res, button);
+  this.status = String(res);
+  if (res) {
+    button.addEventListener('click', () => {
+      this.changeStatus(button, false);
+    });
+  } else {
+    button.addEventListener('click', () => {
+      this.changeStatus(button, true);
+    });
+  }
+};
+
 const addBookToLibrary = () => {
   const childrenForm = form.children;
   const title = childrenForm[1].value;
@@ -37,7 +63,7 @@ const removeBook = (id, node) => {
   localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 };
 
-const fillClass = (res, btnStatus) => {
+/* const fillClass = (res, btnStatus) => {
   if (res) {
     btnStatus.innerHTML = 'Already read';
     btnStatus.className = '';
@@ -47,9 +73,9 @@ const fillClass = (res, btnStatus) => {
     btnStatus.className = '';
     btnStatus.classList.add('btn', 'btn-danger', 'py-2', 'w-75');
   }
-};
+}; */
 
-const changeStatus = (id, button, res) => {
+/* const changeStatus = (id, button, res) => {
   fillClass(res, button);
   myLibrary[id].status = String(res);
   if (res) {
@@ -61,7 +87,7 @@ const changeStatus = (id, button, res) => {
       changeStatus(id, button, true);
     });
   }
-};
+}; */
 
 
 const render = () => {
@@ -77,21 +103,22 @@ const render = () => {
     node.setAttribute('data-attribute', i);
     const nodeChildrens = node.children;
 
+    const book = new Book(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].status);
 
-    nodeChildrens[0].innerHTML = `Title: ${myLibrary[i].title}`;
-    nodeChildrens[1].innerHTML = `Author: ${myLibrary[i].author}`;
-    nodeChildrens[2].innerHTML = `${myLibrary[i].pages} pages`;
+
+    nodeChildrens[0].innerHTML = `Title: ${book.title}`;
+    nodeChildrens[1].innerHTML = `Author: ${book.author}`;
+    nodeChildrens[2].innerHTML = `${book.pages} pages`;
 
     nodeChildrens[4].addEventListener('click', () => {
       removeBook(i, node);
     });
 
-
     const btnStatus = nodeChildrens[3];
-    if (myLibrary[i].status === 'true') {
-      changeStatus(i, btnStatus, true);
+    if (book.status === 'true') {
+      book.changeStatus(btnStatus, true);
     } else {
-      changeStatus(i, btnStatus, false);
+      book.changeStatus(btnStatus, false);
     }
     row.appendChild(node);
   }
