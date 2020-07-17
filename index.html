@@ -13,23 +13,31 @@
 </head>
 
 <body>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-    </script>
-    <div class="my-flex container-fluid">
-        <div class="row"></div>
+
+    <div class="my-flex container-fluid  p-3">
+        <div class="row col-12  m-0 ">
+            <div class="my-flex flex-column mx-1 rounded p-4 rounded border-primary col-3 shadow-lg book d-none mb-1 ">
+                <h6>
+
+                </h6>
+
+                <small class="my-2">
+
+        </small>
+
+                <button class="btn btn-danger py-2 w-75">Not read</button>
+            </div>
+
+        </div>
     </div>
 
-    <form class="add-form my-flex flex-column d-none bg-light ">
+    <form class="add-form my-flex flex-column d-none bg-light p-4 rounded ">
         <label for="ftitle">Title of Book:</label>
-        <input type="text" name="ftitle" value="John" id="ftitle">
+        <input type="text" name="ftitle" placeholder="Title of book" required>
         <label for="fauthor">Name of author:</label>
-        <input type="text" name="fauthor" placeholder="Type the authorname" id="fauthor">
+        <input type="text" name="fauthor" placeholder="Type the authorname" required>
         <label for="fpages">Number of pages:</label>
-        <input type="number" min="0" name="fpages" id='fpages'>
+        <input type="number" min="0" name="fpages" id='fpages' required>
         <label for="fread">Already read this book?</label>
         <input type="checkbox" name="status" id='status'>
         <input name="createBook" type="Submit" value="Add boook" class="btn btn-warning">
@@ -37,6 +45,12 @@
 
     <button type="button" class="btn btn-warning"> +</button>
     <script src="assets/js/index.js" type="module"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
 
 
 </body>

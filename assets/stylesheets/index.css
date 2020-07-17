@@ -1,12 +1,13 @@
-#Container {
+body,
+html {
+    height: 100%;
 }
 
 .my-flex {
     display: flex;
-
 }
 
 .add-form {
-  width: 50vw;
-  margin: auto;
+    width: 50vw;
+    margin: auto;
 }
