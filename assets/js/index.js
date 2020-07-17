@@ -31,6 +31,12 @@ const addBookToLibrary = () => {
 
 }
 
+const removeBook = (id) => {
+    myLibrary.splice(id,1);
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+    render();
+}
+
 const render = () => {
 
     // localStorage.clear();
@@ -44,24 +50,29 @@ const render = () => {
     let div = document.getElementsByClassName("book")[0]
 
     for (let i = 0; i < myLibrary.length; i++) {
-        let node = div.cloneNode(true)
-        node.classList.remove('d-none')
+        let node = div.cloneNode(true);
+        node.classList.remove('d-none');
+        node.setAttribute('data-attribute', i);
         let nodeChildrens = node.children;
 
 
         nodeChildrens[0].innerHTML = `Title: ${myLibrary[i].title}`
-        nodeChildrens[1].innerHTML = `Author: ${myLibrary[i].title}`
+        nodeChildrens[1].innerHTML = `Author: ${myLibrary[i].author}`
+        nodeChildrens[2].innerHTML = myLibrary[i].pages + ' pages'
+
+        nodeChildrens[4].addEventListener("click",function(){removeBook(i);} )
+
+
+
 
 
         if (myLibrary[i].status === 'true') {
-            let btnStatus = nodeChildrens[2]
+            let btnStatus = nodeChildrens[3]
             btnStatus.innerHTML = 'Already read';
             btnStatus.className = ""
             btnStatus.classList.add('btn', 'btn-success', 'py-2', 'w-75');
         }
         row.appendChild(node)
-
-
     }
 
 

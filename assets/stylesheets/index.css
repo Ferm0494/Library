@@ -11,3 +11,7 @@ html {
     width: 50vw;
     margin: auto;
 }
+
+.fa-trash {
+    cursor: pointer;
+}
