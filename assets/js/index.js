@@ -32,13 +32,10 @@ const addBookToLibrary = () => {
 }
 
 const removeBook = (id, node) => {
-
     node.remove()
     myLibrary.splice(id, 1);
     console.log(myLibrary)
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
-
-    // render();
 }
 
 const render = () => {
@@ -72,14 +69,43 @@ const render = () => {
 
 
 
-
+        let btnStatus = nodeChildrens[3]
         if (myLibrary[i].status === 'true') {
-            let btnStatus = nodeChildrens[3]
-            btnStatus.innerHTML = 'Already read';
-            btnStatus.className = ""
-            btnStatus.classList.add('btn', 'btn-success', 'py-2', 'w-75');
+            fillClass(i, true, btnStatus)
+        } else {
+            fillClass(i, false, btnStatus)
         }
         row.appendChild(node)
+    }
+
+
+}
+
+const changeStatus = (id, button, res) => {
+    fillClass(id, res, button)
+    myLibrary[id].status = String(res)
+}
+
+const fillClass = (id, res, btnStatus) => {
+
+    if (res) {
+        btnStatus.remove
+        btnStatus.innerHTML = 'Already read';
+        btnStatus.className = ""
+        btnStatus.classList.add('btn', 'btn-success', 'py-2', 'w-75');
+        btnStatus.addEventListener('click', () => {
+            changeStatus(id, btnStatus, false)
+        })
+
+
+    } else {
+        btnStatus.innerHTML = 'Not read';
+        btnStatus.className = ""
+        btnStatus.classList.add('btn', 'btn-danger', 'py-2', 'w-75');
+        btnStatus.addEventListener('click', () => {
+            changeStatus(id, btnStatus, true)
+        })
+
     }
 
 
