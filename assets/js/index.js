@@ -99,11 +99,17 @@ const render = () => {
   }
 };
 
+const closeForm = () => {
+  window.location.reload();
+};
 
 const showAddForm = () => {
   form.classList.remove('d-none');
-  const buttonCreate = document.getElementsByName('createBook')[0];
+  const buttons = document.getElementsByName('formButton');
+  const buttonCreate = buttons[0];
+  const buttonCancel = buttons[1];
   buttonCreate.addEventListener('click', addBookToLibrary);
+  buttonCancel.addEventListener('click', closeForm);
   document.body.style.background = '#686868';
   hideOutputs(showForm, row);
 };

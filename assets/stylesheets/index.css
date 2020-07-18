@@ -15,3 +15,7 @@ html {
 .fa-trash {
   cursor: pointer;
 }
+
+.book {
+    height : 20em;
+}
