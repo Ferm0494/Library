@@ -24,7 +24,7 @@ To get a local copy up and running follow these simple example steps:
 
 4. Type  git clone and then paste the URL you previously copied to the clipboard
 
-5. Open your web browser and the index.html local file that was copied to the proyect folder
+5. Open your web browser and then open the index.html local file that was copied to the proyect folder
 
 ## See a live demo [Here](https://xenodochial-knuth-d5f1c9.netlify.app/)
 
